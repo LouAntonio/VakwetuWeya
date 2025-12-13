@@ -2,7 +2,7 @@ import { Home, Package, Glasses, Hotel, ShoppingBag } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
-	{ icon: Home, label: "Home", path: "/home" },
+	{ icon: Home, label: "Home", path: "/" },
 	{ icon: Package, label: "Pacotes", path: "/packages" },
 	{ icon: Glasses, label: "RA 360\xB0", path: "/ar360" },
 	{ icon: Hotel, label: "Hot\xE9is", path: "/hotels" },

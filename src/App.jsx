@@ -24,7 +24,7 @@ export default function App() {
 		location.pathname.startsWith("/explore/");
 
 	const showBottomNav =
-		location.pathname !== "/" &&
+		location.pathname !== "/onboarding" &&
 		location.pathname !== "/custom-tour" &&
 		!isDetailScreen;
 
@@ -33,14 +33,14 @@ export default function App() {
 			<div className="flex-1 overflow-auto">
 				<Routes>
 					<Route
-						path="/"
+						path="/onboarding"
 						element={
 							<Onboarding
-								onFinish={() => navigate("/home")}
+								onFinish={() => navigate("/")}
 							/>
 						}
 					/>
-					<Route path="/home" element={<Home />} />
+					<Route path="/" element={<Home />} />
 					<Route path="/packages" element={<Packages />} />
 					<Route
 						path="/packages/:id"

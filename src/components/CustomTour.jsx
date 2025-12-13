@@ -217,7 +217,7 @@ export default function CustomTour() {
 			{/* Header */}
 			<div className="bg-gradient-to-br from-teal-600 to-emerald-600 px-6 pt-12 pb-6 relative">
 				<button
-					onClick={() => navigate("/home")}
+					onClick={() => navigate("/")}
 					className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-neutral-50 transition-colors"
 				>
 					<ArrowLeft className="w-5 h-5 text-neutral-900" />
