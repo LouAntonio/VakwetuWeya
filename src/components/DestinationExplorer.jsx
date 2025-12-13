@@ -2,7 +2,7 @@ import { ArrowLeft, MapPin, Heart } from "lucide-react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { useState } from "react";
-import logo from "figma:asset/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png";
+import logo from "figma:asset/logo.png";
 const beaches = [
 	{
 		id: 1,

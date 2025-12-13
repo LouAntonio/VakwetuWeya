@@ -16,7 +16,7 @@ import { Card } from "./ui/card";
 import { Calendar as CalendarComponent } from "./ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useState, useEffect } from "react";
-import logo from "figma:asset/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png";
+import logo from "figma:asset/logo.png";
 const destinations = [
 	{
 		id: 1,

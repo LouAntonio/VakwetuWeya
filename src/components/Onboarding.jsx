@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import logo from "figma:asset/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png";
+import logo from "figma:asset/logo.png";
 const slides = [
 	{
 		title: "Bem-vindo \xE0 Vakwetu Weya",

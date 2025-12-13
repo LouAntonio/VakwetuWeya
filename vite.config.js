@@ -15,10 +15,10 @@ export default defineConfig({
 			"next-themes@0.4.6": "next-themes",
 			"lucide-react@0.487.0": "lucide-react",
 			"input-otp@1.4.2": "input-otp",
-			"figma:asset/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png":
+			"figma:asset/logo.png":
 				path.resolve(
 					__dirname,
-					"./src/assets/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png",
+					"./src/assets/logo.png",
 				),
 			"embla-carousel-react@8.6.0": "embla-carousel-react",
 			"cmdk@1.1.1": "cmdk",
