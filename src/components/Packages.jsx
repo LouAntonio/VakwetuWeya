@@ -64,7 +64,10 @@ const packages = [
 		type: "fora",
 	},
 ];
-export default function Packages({ onNavigate }) {
+import { useNavigate } from "react-router-dom";
+
+export default function Packages() {
+	const navigate = useNavigate();
 	return (
 		<div className="min-h-full bg-neutral-50 pb-24">
 			{/* Header */}
@@ -110,7 +113,7 @@ export default function Packages({ onNavigate }) {
 						<Card
 							key={pkg.id}
 							className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-							onClick={() => onNavigate("package-detail", pkg.id)}
+							onClick={() => navigate(`/packages/${pkg.id}`)}
 						>
 							<div className="flex gap-4">
 								<div className="relative w-32 h-32 flex-shrink-0">

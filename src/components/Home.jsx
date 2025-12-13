@@ -10,7 +10,9 @@ import {
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useNavigate } from "react-router-dom";
 import logo from "figma:asset/9ea65f0ca487a91974bdaf913ebea037eb7e4db4.png";
+
 const featuredPackages = [
 	{
 		id: 1,
@@ -29,39 +31,43 @@ const featuredPackages = [
 		duration: "5 dias",
 	},
 ];
+
 const quickAccess = [
 	{
 		icon: Package,
 		label: "Pacotes",
-		screen: "packages",
+		path: "/packages",
 		color: "bg-emerald-100 text-emerald-700",
 	},
 	{
 		icon: Hotel,
-		label: "Hot\xE9is",
-		screen: "hotels",
+		label: "Hotéis",
+		path: "/hotels",
 		color: "bg-blue-100 text-blue-700",
 	},
 	{
 		icon: UtensilsCrossed,
 		label: "Restaurantes",
-		screen: "restaurants",
+		path: "/restaurants",
 		color: "bg-orange-100 text-orange-700",
 	},
 	{
 		icon: ShoppingBag,
 		label: "Artesanato",
-		screen: "crafts",
+		path: "/crafts",
 		color: "bg-purple-100 text-purple-700",
 	},
 	{
 		icon: Glasses,
-		label: "RA 360\xB0",
-		screen: "ar360",
+		label: "RA 360°",
+		path: "/ar360",
 		color: "bg-pink-100 text-pink-700",
 	},
 ];
-export default function Home({ onNavigate, onNavigateToExplorer }) {
+
+export default function Home() {
+	const navigate = useNavigate();
+
 	return (
 		<div className="min-h-full bg-neutral-50">
 			{/* Header */}
@@ -89,7 +95,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 						{quickAccess.map((item) => (
 							<button
 								key={item.label}
-								onClick={() => onNavigate(item.screen)}
+								onClick={() => navigate(item.path)}
 								className="flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-neutral-50 transition-colors"
 							>
 								<div
@@ -110,7 +116,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 			<div className="px-6 mt-6">
 				<Card
 					className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow bg-gradient-to-br from-teal-600 to-emerald-600"
-					onClick={() => onNavigate("custom-tour")}
+					onClick={() => navigate("/custom-tour")}
 				>
 					<div className="p-6">
 						<div className="flex items-start gap-4">
@@ -145,7 +151,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 					<h2 className="text-neutral-900">Pacotes em Destaque</h2>
 					<Button
 						variant="ghost"
-						onClick={() => onNavigate("packages")}
+						onClick={() => navigate("/packages")}
 					>
 						Ver todos
 					</Button>
@@ -156,7 +162,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 						<Card
 							key={pkg.id}
 							className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-							onClick={() => onNavigate("package-detail", pkg.id)}
+							onClick={() => navigate(`/packages/${pkg.id}`)}
 						>
 							<div className="relative h-48">
 								<img
@@ -195,7 +201,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 				<div className="grid grid-cols-2 gap-4">
 					<Card
 						className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-						onClick={() => onNavigateToExplorer("beaches")}
+						onClick={() => navigate("/explore/beaches")}
 					>
 						<div className="relative h-32">
 							<img
@@ -210,7 +216,7 @@ export default function Home({ onNavigate, onNavigateToExplorer }) {
 					</Card>
 					<Card
 						className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-						onClick={() => onNavigateToExplorer("nature")}
+						onClick={() => navigate("/explore/nature")}
 					>
 						<div className="relative h-32">
 							<img

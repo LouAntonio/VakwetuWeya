@@ -147,7 +147,14 @@ const nature = [
 		image: "https://images.unsplash.com/photo-1613908853317-8606178b3e81?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmdvbGElMjBsYW5kc2NhcGUlMjBuYXR1cmV8ZW58MXx8fHwxNzYzMzg3Njg1fDA&ixlib=rb-4.1.0&q=80&w=1080",
 	},
 ];
-export default function DestinationExplorer({ category, onBack }) {
+import { useParams, useNavigate } from "react-router-dom";
+
+export default function DestinationExplorer() {
+	const { category } = useParams();
+	const navigate = useNavigate();
+	const onBack = () => navigate(-1);
+	// Wait, onBack was just navigate(-1) right?
+	// I can just use navigate(-1) in the click handler.
 	const [favorites, setFavorites] = useState([]);
 	const destinations = category === "beaches" ? beaches : nature;
 	const title =
@@ -166,7 +173,7 @@ export default function DestinationExplorer({ category, onBack }) {
 			{/* Header */}
 			<div className="bg-gradient-to-br from-emerald-600 to-teal-600 px-6 pt-12 pb-6 relative">
 				<button
-					onClick={onBack}
+					onClick={() => navigate(-1)}
 					className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg"
 				>
 					<ArrowLeft className="w-5 h-5 text-neutral-900" />

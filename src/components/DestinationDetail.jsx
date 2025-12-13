@@ -129,7 +129,12 @@ const getDestinationData = (id) => {
 		}
 	);
 };
-export default function DestinationDetail({ destinationId, onBack }) {
+import { useParams, useNavigate } from "react-router-dom";
+
+export default function DestinationDetail() {
+	const { id } = useParams();
+	const destinationId = parseInt(id, 10);
+	const navigate = useNavigate();
 	const destination = getDestinationData(destinationId);
 	return (
 		<div className="min-h-full bg-neutral-50">
@@ -144,7 +149,7 @@ export default function DestinationDetail({ destinationId, onBack }) {
 
 				{/* Back Button */}
 				<button
-					onClick={onBack}
+					onClick={() => navigate(-1)}
 					className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg"
 				>
 					<ArrowLeft className="w-5 h-5 text-neutral-900" />
@@ -263,7 +268,7 @@ export default function DestinationDetail({ destinationId, onBack }) {
 			{/* Fixed Bottom CTA */}
 			<div className="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-200 p-4 shadow-lg">
 				<Button
-					onClick={onBack}
+					onClick={() => navigate(-1)}
 					className="w-full bg-teal-600 hover:bg-teal-700"
 				>
 					Adicionar ao meu passeio

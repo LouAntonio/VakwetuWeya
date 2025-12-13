@@ -100,7 +100,10 @@ const amenityIcons = {
 	"Pequeno-almo\xE7o": Coffee,
 	Estacionamento: Car,
 };
-export default function Hotels({ onNavigate }) {
+import { useNavigate } from "react-router-dom";
+
+export default function Hotels() {
+	const navigate = useNavigate();
 	return (
 		<div className="min-h-full bg-neutral-50 pb-24">
 			{/* Header */}
@@ -147,7 +150,7 @@ export default function Hotels({ onNavigate }) {
 						<Card
 							key={hotel.id}
 							className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-							onClick={() => onNavigate(hotel.id)}
+							onClick={() => navigate(`/hotels/${hotel.id}`)}
 						>
 							<div className="relative h-48">
 								<img

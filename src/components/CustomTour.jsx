@@ -151,7 +151,10 @@ const destinations = [
 		],
 	},
 ];
-export default function CustomTour({ onBack, onNavigateToDestination }) {
+import { useNavigate } from "react-router-dom";
+
+export default function CustomTour() {
+	const navigate = useNavigate();
 	const [selectedDate, setSelectedDate] = useState(void 0);
 	const [selectedDestinations, setSelectedDestinations] = useState([]);
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -214,7 +217,7 @@ export default function CustomTour({ onBack, onNavigateToDestination }) {
 			{/* Header */}
 			<div className="bg-gradient-to-br from-teal-600 to-emerald-600 px-6 pt-12 pb-6 relative">
 				<button
-					onClick={onBack}
+					onClick={() => navigate("/home")}
 					className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-neutral-50 transition-colors"
 				>
 					<ArrowLeft className="w-5 h-5 text-neutral-900" />
@@ -278,11 +281,11 @@ export default function CustomTour({ onBack, onNavigateToDestination }) {
 									date <
 									new Date(
 										/* @__PURE__ */ new Date().setHours(
-											0,
-											0,
-											0,
-											0,
-										),
+										0,
+										0,
+										0,
+										0,
+									),
 									)
 								}
 								initialFocus
@@ -524,8 +527,8 @@ export default function CustomTour({ onBack, onNavigateToDestination }) {
 												className="w-fit text-teal-700 hover:text-teal-900 hover:bg-teal-100 -ml-2"
 												onClick={(e) => {
 													e.stopPropagation();
-													onNavigateToDestination(
-														destination.id,
+													navigate(
+														`/destinations/${destination.id}`
 													);
 												}}
 											>
@@ -615,11 +618,11 @@ export default function CustomTour({ onBack, onNavigateToDestination }) {
 													</div>
 													{index <
 														selectedDestinations.length -
-															1 && (
-														<div className="flex items-center justify-center py-2">
-															<div className="w-1 h-6 bg-gradient-to-b from-teal-600 to-teal-300" />
-														</div>
-													)}
+														1 && (
+															<div className="flex items-center justify-center py-2">
+																<div className="w-1 h-6 bg-gradient-to-b from-teal-600 to-teal-300" />
+															</div>
+														)}
 												</div>
 											);
 										},

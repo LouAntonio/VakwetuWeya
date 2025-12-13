@@ -95,7 +95,12 @@ const hotelData = {
 const getHotelData = (id) => {
 	return hotelData[id] || { ...hotelData[1], name: `Hotel ${id}` };
 };
-export default function HotelDetail({ hotelId, onBack }) {
+import { useParams, useNavigate } from "react-router-dom";
+
+export default function HotelDetail() {
+	const { id } = useParams();
+	const hotelId = parseInt(id, 10);
+	const navigate = useNavigate();
 	const hotel = getHotelData(hotelId);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	return (
@@ -112,7 +117,7 @@ export default function HotelDetail({ hotelId, onBack }) {
 
 					{/* Back Button */}
 					<button
-						onClick={onBack}
+						onClick={() => navigate(-1)}
 						className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg"
 					>
 						<ArrowLeft className="w-5 h-5 text-neutral-900" />

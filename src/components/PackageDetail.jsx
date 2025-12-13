@@ -111,7 +111,12 @@ const packageData = {
 		],
 	},
 };
-export default function PackageDetail({ packageId, onBack }) {
+import { useParams, useNavigate } from "react-router-dom";
+
+export default function PackageDetail() {
+	const { id } = useParams();
+	const packageId = parseInt(id, 10);
+	const navigate = useNavigate();
 	const pkg = packageData[packageId] || packageData[1];
 	return (
 		<div className="min-h-full bg-neutral-50">
@@ -126,7 +131,7 @@ export default function PackageDetail({ packageId, onBack }) {
 
 				{/* Back Button */}
 				<button
-					onClick={onBack}
+					onClick={() => navigate(-1)}
 					className="absolute top-4 left-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg"
 				>
 					<ArrowLeft className="w-5 h-5 text-neutral-900" />
