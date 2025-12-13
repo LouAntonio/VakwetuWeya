@@ -23,7 +23,7 @@ export default function BottomNav() {
 
 	return (
 		<div
-			className="px-3 py-2 mx-3 mb-3 rounded-2xl"
+			className="px-3 py-2 mx-3 rounded-t-2xl"
 			style={{
 				background: "rgba(255, 255, 255, 0.75)",
 				backdropFilter: "blur(20px)",
@@ -37,7 +37,7 @@ export default function BottomNav() {
 					const isActive = activeTab === item.path;
 					return (
 						<button
-							key={item.path}
+							b key={item.path}
 							onClick={() => navigate(item.path)}
 							className="relative flex flex-col items-center gap-0.5 py-2 px-3 rounded-xl"
 							style={{
@@ -45,7 +45,7 @@ export default function BottomNav() {
 								background: isActive
 									? "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%)"
 									: "transparent",
-								transform: isActive ? "translateY(-2px)" : "translateY(0)",
+								transform: isActive ? "translateY(-4px)" : "translateY(0)",
 							}}
 						>
 							{/* Active indicator dot */}
