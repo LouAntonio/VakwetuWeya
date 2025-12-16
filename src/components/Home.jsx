@@ -85,7 +85,7 @@ export default function Home() {
 						<h1 className="text-white">Vakwetu Weya</h1>
 					</div>
 				</div>
-				<p className="text-emerald-100">Descobre a beleza de Angola</p>
+				<p className="text-emerald-100">Descubra a beleza de Angola</p>
 			</div>
 
 			{/* Quick Access */}
@@ -113,29 +113,28 @@ export default function Home() {
 			</div>
 
 			{/* Custom Tour Section */}
-			<div className="px-6 mt-6">
+			<div className="px-4 sm:px-6 mt-6">
 				<Card
 					className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow bg-gradient-to-br from-teal-600 to-emerald-600"
 					onClick={() => navigate("/custom-tour")}
 				>
-					<div className="p-6">
-						<div className="flex items-start gap-4">
+					<div className="p-4 sm:p-6">
+						<div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
 							<div className="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
 								<Car className="w-6 h-6 text-teal-700" />
 							</div>
-							<div className="flex-1">
-								<h2 className="text-white mb-2">
+							<div className="flex-1 w-full">
+								<h2 className="text-white mb-2 text-lg sm:text-xl">
 									Passeios pela Província
 								</h2>
-								<p className="text-teal-100 mb-4">
-									Cria o teu passeio personalizado! Escolhe os
-									destinos e nós tratamos do resto.
+								<p className="text-teal-100 mb-3 sm:mb-4 text-sm sm:text-base">
+									Cria o teu passeio personalizado! Escolhe os destinos e nós tratamos do resto.
 								</p>
-								<div className="flex items-center gap-2">
-									<Badge className="bg-white text-teal-700 hover:bg-white">
+								<div className="flex flex-wrap items-center gap-2">
+									<Badge className="bg-white text-teal-700 hover:bg-white text-xs sm:text-sm whitespace-nowrap">
 										A partir de 50.000 Kz
 									</Badge>
-									<Badge className="bg-teal-700 text-white hover:bg-teal-700">
+									<Badge className="bg-teal-700 text-white hover:bg-teal-700 text-xs sm:text-sm whitespace-nowrap">
 										Até 3 locais incluídos
 									</Badge>
 								</div>
