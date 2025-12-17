@@ -12,6 +12,7 @@ import CustomTour from "./components/CustomTour";
 import DestinationDetail from "./components/DestinationDetail";
 import DestinationExplorer from "./components/DestinationExplorer";
 import BottomNav from "./components/BottomNav";
+import TopNav from "./components/TopNav";
 
 export default function App() {
 	const location = useLocation();
@@ -30,7 +31,11 @@ export default function App() {
 
 	return (
 		<div className="h-screen flex flex-col bg-neutral-50">
-			<div className="flex-1 overflow-auto">
+			{/* TopNav - visible only on desktop (md and up) */}
+			{showBottomNav && <TopNav />}
+
+			{/* Main content area with responsive padding */}
+			<div className="flex-1 overflow-auto md:pt-20">
 				<Routes>
 					<Route
 						path="/onboarding"
@@ -65,6 +70,8 @@ export default function App() {
 					/>
 				</Routes>
 			</div>
+
+			{/* BottomNav - visible only on mobile (below md) */}
 			{showBottomNav && <BottomNav />}
 		</div>
 	);

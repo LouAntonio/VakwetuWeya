@@ -1,18 +1,21 @@
-import { Home, Package, Glasses, Hotel, ShoppingBag } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const navItems = [
-	{ icon: Home, label: "Home", path: "/" },
-	{ icon: Package, label: "Pacotes", path: "/packages" },
-	{ icon: Glasses, label: "RA 360°", path: "/ar360" },
-	{ icon: Hotel, label: "Hotéis", path: "/hotels" },
-	{ icon: ShoppingBag, label: "Artesanato", path: "/crafts" },
-];
+import { navItems } from "../config/navConfig";
+import { useState, useEffect } from "react";
 
 export default function BottomNav() {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const currentPath = location.pathname;
+	const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsDesktop(window.innerWidth >= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	const getActiveTab = (path) => {
 		if (path === "/restaurants") return "/hotels";
@@ -21,8 +24,11 @@ export default function BottomNav() {
 
 	const activeTab = getActiveTab(currentPath);
 
+	// Don't render on desktop
+	if (isDesktop) return null;
+
 	return (
-		<div
+		<nav
 			className="px-3 py-2 mx-3 rounded-t-2xl"
 			style={{
 				background: "rgba(255, 255, 255, 0.75)",
@@ -104,6 +110,6 @@ export default function BottomNav() {
 					);
 				})}
 			</div>
-		</div>
+		</nav>
 	);
 }
