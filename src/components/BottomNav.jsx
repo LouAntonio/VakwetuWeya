@@ -1,10 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { navItems } from "../config/navConfig";
 import { useState, useEffect } from "react";
 
 export default function BottomNav() {
 	const location = useLocation();
-	const navigate = useNavigate();
 	const currentPath = location.pathname;
 	const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
@@ -42,9 +41,9 @@ export default function BottomNav() {
 				{navItems.map((item) => {
 					const isActive = activeTab === item.path;
 					return (
-						<button
-							b key={item.path}
-							onClick={() => navigate(item.path)}
+						<Link
+							key={item.path}
+							to={item.path}
 							className="relative flex flex-col items-center gap-0.5 py-2 px-3 rounded-xl"
 							style={{
 								transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -52,6 +51,7 @@ export default function BottomNav() {
 									? "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%)"
 									: "transparent",
 								transform: isActive ? "translateY(-4px)" : "translateY(0)",
+								textDecoration: "none",
 							}}
 						>
 							{/* Active indicator dot */}
@@ -106,7 +106,7 @@ export default function BottomNav() {
 							>
 								{item.label}
 							</span>
-						</button>
+						</Link>
 					);
 				})}
 			</div>

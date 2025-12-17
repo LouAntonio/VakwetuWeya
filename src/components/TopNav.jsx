@@ -1,10 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { navItems } from "../config/navConfig";
 import { useState, useEffect } from "react";
 
 export default function TopNav() {
 	const location = useLocation();
-	const navigate = useNavigate();
 	const currentPath = location.pathname;
 	const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
@@ -65,20 +64,21 @@ export default function TopNav() {
 						</span>
 					</div>
 
-					{/* Navigation Items */}
-					<div className="flex items-center gap-2">
+					{/* Navigation Items - positioned on the right */}
+					<div className="flex items-center gap-4">
 						{navItems.map((item) => {
 							const isActive = activeTab === item.path;
 							return (
-								<button
+								<Link
 									key={item.path}
-									onClick={() => navigate(item.path)}
+									to={item.path}
 									className="relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300"
 									style={{
 										background: isActive
 											? "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%)"
 											: "transparent",
 										transform: isActive ? "translateY(-2px)" : "translateY(0)",
+										textDecoration: "none",
 									}}
 								>
 									{/* Active indicator */}
@@ -86,11 +86,11 @@ export default function TopNav() {
 										<span
 											className="absolute top-0 left-1/2"
 											style={{
-												width: "24px",
-												height: "3px",
-												borderRadius: "0 0 3px 3px",
+												width: "6px",
+												height: "6px",
+												borderRadius: "50%",
 												background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-												transform: "translateX(-50%)",
+												transform: "translateX(-180%)",
 												boxShadow: "0 2px 8px rgba(16, 185, 129, 0.5)",
 											}}
 										/>
@@ -129,13 +129,10 @@ export default function TopNav() {
 									>
 										{item.label}
 									</span>
-								</button>
+								</Link>
 							);
 						})}
 					</div>
-
-					{/* Right side - placeholder for future features (user menu, etc) */}
-					<div className="w-10" />
 				</div>
 			</div>
 		</nav>
