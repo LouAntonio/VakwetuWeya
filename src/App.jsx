@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Onboarding from "./components/Onboarding";
 import Home from "./components/Home";
 import Packages from "./components/Packages";
@@ -17,6 +18,16 @@ import TopNav from "./components/TopNav";
 export default function App() {
 	const location = useLocation();
 	const navigate = useNavigate();
+	const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsDesktop(window.innerWidth >= 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	const isDetailScreen =
 		location.pathname.startsWith("/packages/") ||
@@ -35,7 +46,12 @@ export default function App() {
 			{showBottomNav && <TopNav />}
 
 			{/* Main content area with responsive padding */}
-			<div className="flex-1 overflow-auto md:pt-20">
+			<div
+				className="flex-1 overflow-auto"
+				style={{
+					paddingTop: isDesktop && showBottomNav ? "80px" : "0",
+				}}
+			>
 				<Routes>
 					<Route
 						path="/onboarding"
